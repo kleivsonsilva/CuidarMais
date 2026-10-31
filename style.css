@@ -1,0 +1,108 @@
+
+  :root {
+    --app-fs: 16px;
+  }
+  html {
+    font-size: var(--app-fs);
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    user-select: none;
+  }
+  /* Estilos do Modo Alto Contraste */
+  body.hc {
+    --tw-bg-opacity: 1;
+    background-color: #000000 !important;
+    color: #ffffff !important;
+  }
+  body.hc .hc-card {
+    background-color: #121212 !important;
+    border-color: #333333 !important;
+    color: #ffffff !important;
+  }
+  body.hc .hc-text {
+    color: #ffffff !important;
+  }
+  body.hc .hc-btn-primary {
+    background-color: #facc15 !important;
+    color: #000000 !important;
+    font-weight: 800 !important;
+  }
+  body.hc .hc-btn-ghost {
+    border-color: #ffffff !important;
+    color: #ffffff !important;
+  }
+
+  /* Animações e efeitos */
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 15px rgba(20, 184, 166, 0.4); }
+    50% { box-shadow: 0 0 25px rgba(20, 184, 166, 0.8); }
+  }
+  .pulse-glow {
+    animation: pulseGlow 2.5s infinite;
+  }
+
+  /* Campos da tela de login */
+  .auth-input{width:100%;height:3.5rem;padding:0 1rem 0 3rem;border:1.5px solid #cbd5e1;border-radius:1rem;background:#f8fafc;color:#0f172a;font-size:1rem;outline:none;user-select:text;-webkit-user-select:text;transition:border-color .15s,box-shadow .15s,background .15s}
+  .auth-input::placeholder{color:#64748b;opacity:1}
+  .auth-input:hover{border-color:#94a3b8}
+  .auth-input:focus{border-color:#0d9488;background:#fff;box-shadow:0 0 0 4px rgba(20,184,166,.2)}
+  .auth-input.pr-14{padding-right:3.5rem}
+  .auth-ico{position:absolute;left:1rem;top:50%;transform:translateY(-50%);font-size:1.25rem;color:#64748b;pointer-events:none}
+  .auth-input:focus ~ .auth-ico,.relative:focus-within > .auth-ico{color:#0d9488}
+  .dark .auth-input{background:#0f172a;border-color:#475569;color:#f8fafc}
+  .dark .auth-input:focus{background:#020617}
+  .dark .auth-input::placeholder{color:#94a3b8}
+
+  /* Ocultar barra de rolagem mas manter funcionalidade */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* ===== Ajustes para celular ===== */
+  html{-webkit-text-size-adjust:100%}
+  *{-webkit-tap-highlight-color:transparent}
+  button,a,[onclick]{touch-action:manipulation}
+  body{overscroll-behavior-y:none}
+  @supports(height:100dvh){.min-h-screen{min-height:100dvh}}
+  @media (max-width:767px){
+    input,select,textarea,.field{font-size:16px !important}
+    .field,.auth-input{min-height:48px}
+    main{padding-bottom:calc(6.5rem + env(safe-area-inset-bottom)) !important}
+    .fixed.bottom-0{padding-bottom:env(safe-area-inset-bottom)}
+    main button{min-height:44px}
+    main h1{font-size:1.5rem;line-height:2rem}
+  }
+
+/* Campos do aplicativo */
+.field{width:100%;padding:.75rem;border:1px solid rgb(226 232 240);border-radius:.75rem;background:rgb(248 250 252);font-size:.875rem;outline:none}.dark .field{border-color:rgb(51 65 85);background:rgb(15 23 42);color:white}.field:focus{box-shadow:0 0 0 2px rgb(20 184 166 / .35)}.field{color:#0f172a!important}.field::placeholder{color:#64748b!important;opacity:1}.dark .field{color:#f8fafc!important}.dark .field::placeholder{color:#94a3b8!important}.field:disabled{opacity:.7;cursor:not-allowed}
+
+/* Indicador de sincronização com Firebase */
+#firebase-status{position:sticky;bottom:0;z-index:140;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:.5rem;padding:.55rem 1rem;background:#ecfdf5;color:#065f46;border-top:1px solid #a7f3d0;font-size:.85rem;text-align:center;user-select:text}
+#firebase-status[data-state="error"],#firebase-status[data-state="conflict"]{background:#fff1f2;color:#9f1239;border-color:#fda4af}
+#firebase-status[data-state="loading"],#firebase-status[data-state="pending"],#firebase-status[data-state="saving"]{background:#fffbeb;color:#92400e;border-color:#fde68a}
+#firebase-status button,.cloud-start button{border:1px solid currentColor;border-radius:.5rem;padding:.4rem .65rem;font-weight:700;background:transparent;cursor:pointer;min-height:44px}
+.cloud-start{padding:3rem 1.5rem;max-width:40rem;margin:auto;text-align:center}.cloud-start h1{font-size:1.75rem;font-weight:700;margin-bottom:1rem}.cloud-start p{margin-bottom:1rem}
+
+/* ===== Responsável no celular ===== */
+@media (max-width:767px){
+  /* barra de status fica acima da barra de navegação, sem cobri-la */
+  body:has([data-bottom-nav]) #firebase-status{position:fixed;left:0;right:0;bottom:calc(4.5rem + env(safe-area-inset-bottom));z-index:45;padding:.3rem .75rem;font-size:.75rem}
+  body:has([data-bottom-nav]) main{padding-bottom:calc(9rem + env(safe-area-inset-bottom)) !important}
+  #firebase-status button{min-height:40px;font-size:.75rem}
+  main{padding-left:.875rem;padding-right:.875rem}
+  main .p-6{padding:1rem}
+  main .p-5{padding:.9rem}
+  main .rounded-3xl{border-radius:1.25rem}
+  main h1{overflow-wrap:anywhere}
+  [data-bottom-nav] button{min-height:56px}
+}
+@media (max-width:480px){
+  /* formulários de duas colunas viram uma coluna */
+  main .grid.grid-cols-2:has(.field){grid-template-columns:1fr}
+}
