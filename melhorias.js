@@ -166,7 +166,7 @@ window.timeFieldHTML=function(){
   return `<div class="space-y-2"><label class="text-xs font-bold">Horários de tomar</label>
     <input type="hidden" id="times" value="08:00">
     <div id="time-chips" class="flex flex-wrap gap-2 min-h-[2rem]"></div>
-    <div class="flex gap-2"><input id="timeInput" class="field" inputmode="numeric" autocomplete="off" maxlength="5" placeholder="Digite 2030 e vira 20:30" oninput="timeMask(this)" onkeydown="if(event.key==='Enter'){event.preventDefault();addTimeFromInput();}"><button type="button" onclick="addTimeFromInput()" class="px-4 rounded-xl bg-teal-600 text-white font-bold shrink-0">Adicionar</button></div>
+    <div class="flex gap-2"><input id="timeInput" class="field" inputmode="numeric" autocomplete="off" maxlength="5" placeholder="Digite Horário" oninput="timeMask(this)" onkeydown="if(event.key==='Enter'){event.preventDefault();addTimeFromInput();}"><button type="button" onclick="addTimeFromInput()" class="px-4 rounded-xl bg-teal-600 text-white font-bold shrink-0">Adicionar</button></div>
     <div class="flex flex-wrap gap-2">${quick.map(q=>`<button type="button" data-qt="${q[1]}" onclick="toggleTime('${q[1]}')" class="qt-chip">${q[0]} ${q[1]}</button>`).join('')}</div>
     <div class="flex flex-wrap items-center gap-2 text-xs"><span>A cada</span><select id="everyH" class="field !w-auto !min-h-0 !py-2"><option>4</option><option>6</option><option selected>8</option><option>12</option></select><span>horas, a partir de</span><input id="everyFrom" class="field !w-24 !min-h-0 !py-2 text-center" inputmode="numeric" maxlength="5" value="08:00" oninput="timeMask(this)"><button type="button" onclick="everyHours()" class="px-3 py-2 rounded-xl border font-bold">Gerar</button></div></div>`;
 };
